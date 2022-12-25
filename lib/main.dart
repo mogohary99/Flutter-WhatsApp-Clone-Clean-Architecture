@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_flutter_clone/features/presentation/controllers/chat_background_cubit/chat_background_cubit.dart';
 
 import 'core/utils/thems/my_colors.dart';
 import 'core/shared/bloc_observer.dart';
@@ -12,6 +11,7 @@ import 'core/services/services_locator.dart' as di;
 import 'core/utils/thems/theme_manager.dart';
 import 'features/presentation/controllers/auth_cubit/auth_cubit.dart';
 import 'features/presentation/controllers/bottom_chat_cubit/bottom_chat_cubit.dart';
+import 'features/presentation/controllers/chat_background_cubit/chat_background_cubit.dart';
 import 'features/presentation/controllers/chat_cubit/chat_cubit.dart';
 import 'features/presentation/controllers/select_contact_cubit/select_contact_cubit.dart';
 import 'features/presentation/views/camera/camera_screen.dart';
@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => di.sl<AuthCubit>()..getCurrentUser()),
         BlocProvider(
-          create: (context) => di.sl<SelectContactCubit>()..getAllContacts()..getContactsOnWhatsApp(),
+          create: (context) => di.sl<SelectContactCubit>()
+            ..getAllContacts()
+            ..getContactsOnWhatsApp(),
         ),
         BlocProvider(create: (context) => di.sl<ChatCubit>()),
         BlocProvider(create: (context) => di.sl<BottomChatCubit>()),
