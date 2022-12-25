@@ -1,0 +1,80 @@
+name: whatsapp_flutter_clone
+description: A new Flutter application.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0-313.0.dev <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  country_picker: ^2.0.16
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  flutter_bloc: ^8.1.1
+  get_it: ^7.2.0
+  shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.6
+  flutter_contacts: ^1.1.5+1
+  uuid: ^3.0.7
+  intl: ^0.17.0
+  cached_network_image: ^3.2.3
+  giphy_get: ^3.1.1
+  emoji_picker_flutter: ^1.5.1
+  camera: ^0.10.0+4
+  path_provider: ^2.0.11
+  image_picker: ^0.8.6
+  video_player: ^2.4.9
+  shimmer: ^2.0.0
+  agora_uikit: ^1.1.0
+  audio_waveforms: ^0.1.5+1
+  cached_video_player: ^2.0.3
+  audioplayers: ^1.1.1
+  swipe_to: ^1.0.2
+  sms_autofill: ^2.2.0
+  image_cropper: ^3.0.1
+
+  firebase_auth: ^4.1.0
+  firebase_core: ^2.1.1
+  cloud_firestore: ^4.0.3
+  firebase_storage: ^11.0.3
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 300
