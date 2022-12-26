@@ -1,6 +1,23 @@
-# whatsapp_flutter_clone
+# Flutter-WhatsApp-Clone-Clean-Architecture
+ WhatsApp Clone with Flutter, Firebase, Bloc, Clean Code & Clean Architecture🔥🔥❤️
 
-A new Flutter application.
+## [Watch it on YouTube](https://www.youtube.com/watch?v=INxbhrOeiuk)
+
+
+##  Some of the cool features applied in the project:
+- Flutter bloc(cubit)
+- Enhanced clean architecture.
+- Firebase Firestore, Firebase Storage, and Firebase Auth.
+- Real-Time Changes from Firebase using Streams.
+- Phone Number Authentication
+- 1-1 Chatting with Contacts Only
+- Text, Image, GIF, Audio(Recording), Video & Emoji Sharing
+- Online/Offline Status
+- Seen Message
+- Replying to Messages
+- Auto Scroll on New Messages
+- Custom gallery & camera & video display
+Now, I am working on the status and video calling.
 
 ## Getting Started
 
