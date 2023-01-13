@@ -21,10 +21,10 @@ class AttchementPopUp extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
      // offset: const Offset(0, -340),
       offset: const Offset(0, -350),
-      onOpened: () {
-         if (FocusScope.of(context).hasFocus) {
+      onSelected: (v){
+        if (FocusScope.of(context).hasFocus) {
           Future.delayed(const Duration(milliseconds: 50)).whenComplete(
-            () {
+                () {
               FocusScope.of(context).unfocus();
               FocusScope.of(context).dispose();
             },

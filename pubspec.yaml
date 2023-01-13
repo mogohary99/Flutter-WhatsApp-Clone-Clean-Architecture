@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.0-313.0.dev <3.0.0'
+  sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
   flutter:
@@ -26,7 +26,7 @@ dependencies:
   cached_network_image: ^3.2.3
   giphy_get: ^3.1.1
   emoji_picker_flutter: ^1.5.1
-  camera: ^0.10.0+4
+  camera: ^0.10.1
   path_provider: ^2.0.11
   image_picker: ^0.8.6
   video_player: ^2.4.9
@@ -39,7 +39,7 @@ dependencies:
   sms_autofill: ^2.2.0
   image_cropper: ^3.0.1
 
-  firebase_auth: ^4.1.0
+  firebase_auth: ^4.2.5
   firebase_core: ^2.1.1
   cloud_firestore: ^4.0.3
   firebase_storage: ^11.0.3
