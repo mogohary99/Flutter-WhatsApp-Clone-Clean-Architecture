@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_flutter_clone/features/domain/entities/call.dart';
+import 'package:whatsapp_flutter_clone/features/presentation/views/calls/call_screen.dart';
 import 'package:whatsapp_flutter_clone/features/presentation/views/wallpaper/wallpaper_screen.dart';
 
 import '../../../features/domain/entities/user.dart';
@@ -36,6 +38,7 @@ class Routes {
   static const String profileRoute = '/profile';
   static const String senderUserProfileRoute = '/sender-profile';
   static const String wallpaperRoute = '/wallpaper';
+  static const String callRoute = '/call-route';
 }
 
 class AppRoutes {
@@ -121,6 +124,13 @@ class AppRoutes {
       case Routes.wallpaperRoute:
         return MaterialPageRoute(
           builder: (_) => const WallpaperScreen(),
+        );
+      case Routes.callRoute:
+        final arguments =settings.arguments as Map<String,dynamic>;
+        final Call call = arguments['call'];
+        final String channelId = arguments['channelId'];
+        return MaterialPageRoute(
+          builder: (_) => CallScreen(call: call,channelId: channelId),
         );
       default:
         return unDefinedRoute();

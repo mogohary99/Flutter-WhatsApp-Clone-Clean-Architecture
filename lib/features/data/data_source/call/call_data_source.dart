@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uuid/uuid.dart';
+import '../../../../core/functions/navigator.dart';
+import '../../../../core/utils/routes/routes_manager.dart';
 import '/features/data/models/call_model.dart';
 
 import '../../../domain/usecases/call/end_call_usecase.dart';
@@ -8,7 +10,7 @@ import '../../../domain/usecases/call/make_call_usecase.dart';
 import '../../models/user_model.dart';
 
 abstract class BaseCallDataSource {
-  Future<void> makeCall(MakeCallParameters parameters);
+  Future<CallModel> makeCall(MakeCallParameters parameters);
   Future<void> endCall(EndCallParameters parameters);
   Stream<DocumentSnapshot> callStream();
 }
@@ -37,7 +39,7 @@ class CallDataSource extends BaseCallDataSource {
   }
 
   @override
-  Future<void> makeCall(MakeCallParameters parameters)async {
+  Future<CallModel> makeCall(MakeCallParameters parameters)async {
     String callId = const Uuid().v1();
     UserModel currentUser = await _currentUser();
     CallModel senderCallData = CallModel(
@@ -70,5 +72,6 @@ class CallDataSource extends BaseCallDataSource {
         .collection('call')
         .doc(senderCallData.receiverId)
         .set(receiverCallData.toMap());
+   return senderCallData;
   }
 }

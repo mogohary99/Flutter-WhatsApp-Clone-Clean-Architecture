@@ -3,6 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:whatsapp_flutter_clone/features/data/data_source/call/call_data_source.dart';
+import 'package:whatsapp_flutter_clone/features/data/repository/call_repository.dart';
+import 'package:whatsapp_flutter_clone/features/domain/repository/base_call_repository.dart';
+import 'package:whatsapp_flutter_clone/features/domain/usecases/call/call_stream_usecase.dart';
+import 'package:whatsapp_flutter_clone/features/domain/usecases/call/end_call_usecase.dart';
+import 'package:whatsapp_flutter_clone/features/domain/usecases/call/make_call_usecase.dart';
+import 'package:whatsapp_flutter_clone/features/presentation/controllers/call_cubit/call_cubit.dart';
 import 'package:whatsapp_flutter_clone/features/presentation/controllers/chat_background_cubit/chat_background_cubit.dart';
 
 import '../../features/data/data_source/auth/local/auth_local_data_source.dart';
@@ -58,6 +65,7 @@ Future<void> init() async {
   sl.registerFactory(() => ChatCubit(sl(), sl(), sl(), sl(), sl(), sl(),sl()));
   sl.registerLazySingleton(() => BottomChatCubit());
   sl.registerLazySingleton(() => ChatBackgroundCubit());
+  sl.registerLazySingleton(() => CallCubit(sl(), sl(), sl()));
 
   ///use case
   /////////auth
@@ -84,6 +92,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SendFileMessageUseCase(sl()));
   sl.registerLazySingleton(() => GetNumberOfMessageNotSeenUseCase(sl()));
   // sl.registerLazySingleton(() => GetContactNameUseCase(sl()));
+  /////call
+  sl.registerLazySingleton(() => CallStreamUseCase(sl()));
+  sl.registerLazySingleton(() => EndCallUseCase(sl()));
+  sl.registerLazySingleton(() => MakeCallUseCase(sl()));
   ///repository
   sl.registerLazySingleton<BaseAuthRepository>(
     () => AuthRepository(localDataSource: sl(), remoteDataSource: sl()),
@@ -95,6 +107,7 @@ Future<void> init() async {
 
   sl.registerLazySingleton<BaseChatRepository>(() => ChatRepository(sl()));
 
+  sl.registerLazySingleton<BaseCallRepository>(() => CallRepository(sl()));
   ///remote data source
   sl.registerLazySingleton<BaseAuthRemoteDataSource>(
     () => AuthRemoteDataSource(
@@ -110,6 +123,7 @@ Future<void> init() async {
     () => ChatRemoteDataSource(sl(), sl(), sl()),
   );
 
+  sl.registerLazySingleton(() => CallDataSource(sl(), sl()));
   /// local data source
   sl.registerLazySingleton<BaseAuthLocalDataSource>(
     () => AuthLocalDataSource(sharedPreferences: sl()),

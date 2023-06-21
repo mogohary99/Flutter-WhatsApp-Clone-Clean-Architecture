@@ -18,7 +18,7 @@ void navigateAndRemove(
   );
 }
 
-Future<Object?> navigateTo(
+Future<dynamic> navigateTo(
   BuildContext context,
   String routeName, {
   Object? arguments,

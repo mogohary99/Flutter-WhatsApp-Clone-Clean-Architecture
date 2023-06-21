@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_flutter_clone/features/domain/entities/call.dart';
 
 import '../../../../core/usecase/base_use_case.dart';
 import '../../../domain/usecases/call/call_stream_usecase.dart';
@@ -20,6 +21,8 @@ class CallCubit extends Cubit<CallState> {
     this._makeCallUseCase,
   ) : super(CallInitial());
 
+  static CallCubit get(context) => BlocProvider.of(context);
+
   Stream<DocumentSnapshot> callStream() =>
       _callStreamUseCase(const NoParameters());
 
@@ -38,7 +41,7 @@ class CallCubit extends Cubit<CallState> {
     );
     result.fold(
       (l) => emit(MakeCallErrorState()),
-      (r) => emit(MakeCallSuccessState()),
+      (r) => emit(MakeCallSuccessState(call: r)),
     );
   }
 

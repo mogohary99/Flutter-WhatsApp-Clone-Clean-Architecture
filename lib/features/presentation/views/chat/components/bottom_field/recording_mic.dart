@@ -27,7 +27,8 @@ class _RecordingMicState extends State<RecordingMic> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+{
     return BlocBuilder<BottomChatCubit, BottomChatState>(
       builder: (context, state) {
         BottomChatCubit cubit = BottomChatCubit.get(context);
