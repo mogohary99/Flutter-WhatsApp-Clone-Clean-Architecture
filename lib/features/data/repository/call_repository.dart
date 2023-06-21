@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:whatsapp_flutter_clone/features/domain/entities/call.dart';
 
 import '../../../core/error/failure.dart';
 import '../../domain/repository/base_call_repository.dart';
@@ -26,7 +27,7 @@ class CallRepository extends BaseCallRepository{
   }
 
   @override
-  Future<Either<Failure, void>> makeCall(MakeCallParameters parameters)async {
+  Future<Either<Failure, Call>> makeCall(MakeCallParameters parameters)async {
     final result = await _callDataSource.makeCall(parameters);
     try{
       return Right(result);

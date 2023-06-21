@@ -15,6 +15,9 @@ class MakeCallLoadingState extends CallState {
 }
 
 class MakeCallSuccessState extends CallState {
+  final Call call;
+
+  const MakeCallSuccessState({required this.call});
   @override
   List<Object> get props => [];
 }

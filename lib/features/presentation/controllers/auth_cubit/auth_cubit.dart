@@ -58,7 +58,9 @@ class AuthCubit extends Cubit<AuthState> {
       ),
     );
     result.fold(
-      (l) => emit(SignInErrorState()),
+      (l) {
+        emit(SignInErrorState());
+      },
       (r) => emit(SignInSuccessState()),
     );
   }

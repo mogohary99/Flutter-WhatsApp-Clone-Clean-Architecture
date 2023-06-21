@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_flutter_clone/features/presentation/controllers/call_cubit/call_cubit.dart';
 
 import 'core/utils/thems/my_colors.dart';
 import 'core/shared/bloc_observer.dart';
@@ -24,7 +25,7 @@ Future<void> main() async {
   cameras = await availableCameras();
   runApp(const MyApp());
 }
-
+//kjjkjkjkj
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<ChatCubit>()),
         BlocProvider(create: (context) => di.sl<BottomChatCubit>()),
         BlocProvider(create: (context) => di.sl<ChatBackgroundCubit>()),
+        BlocProvider(create: (context)=> di.sl<CallCubit>()),
       ],
       child: MaterialApp(
         title: AppStrings.appName,

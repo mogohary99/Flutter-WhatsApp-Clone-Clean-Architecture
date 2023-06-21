@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_flutter_clone/features/presentation/controllers/call_cubit/call_cubit.dart';
 
 import '../../../components/custom_network_image.dart';
 import '/core/extensions/time_extension.dart';
@@ -87,10 +89,32 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             actions: [
-              IconButton(
-                onPressed: () {},
-                splashRadius: 20,
-                icon: const Icon(Icons.videocam),
+              BlocConsumer<CallCubit,CallState>(
+                listener: (context,state){
+                  if(state is MakeCallSuccessState){
+                    navigateTo(
+                      context,
+                      Routes.callRoute,
+                      arguments: {
+                        'call': state.call,
+                        'channelId': state.call.callId,
+                      },
+                    );
+                  }
+                },
+                builder: (context,state){
+                  return IconButton(
+                    onPressed: () {
+                      CallCubit.get(context).makeCall(
+                        receiverId: receiverId,
+                        receiverName: name,
+                        receiverPic: userdata.profilePic,
+                      );
+                    },
+                    splashRadius: 20,
+                    icon: const Icon(Icons.videocam),
+                  );
+                },
               ),
               IconButton(
                 onPressed: () {},
@@ -137,6 +161,19 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: () {},
         ),
       ];
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+    );
+  }
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
