@@ -16,7 +16,9 @@ import 'features/presentation/controllers/chat_background_cubit/chat_background_
 import 'features/presentation/controllers/chat_cubit/chat_cubit.dart';
 import 'features/presentation/controllers/select_contact_cubit/select_contact_cubit.dart';
 import 'features/presentation/views/camera/camera_screen.dart';
+
 //csccccccc
+///kjhjhjhj
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -25,6 +27,7 @@ Future<void> main() async {
   cameras = await availableCameras();
   runApp(const MyApp());
 }
+
 //kjjkjkjkj
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -42,7 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<ChatCubit>()),
         BlocProvider(create: (context) => di.sl<BottomChatCubit>()),
         BlocProvider(create: (context) => di.sl<ChatBackgroundCubit>()),
-        BlocProvider(create: (context)=> di.sl<CallCubit>()),
+        BlocProvider(create: (context) => di.sl<CallCubit>()),
       ],
       child: MaterialApp(
         title: AppStrings.appName,
